@@ -147,3 +147,23 @@ html.amp-motion .el-steps li:not(.is-lit) .el-n { background: transparent; color
 
 /* gentle rhythm now the page background is white */
 .el-elements { background: linear-gradient(180deg, #FFFFFF 0%, #F4F9FB 100%); }
+
+/* ---------- Elements logo in the site header + footer (this page only) ---------- */
+.el-brand { gap: 12px; }
+.el-brand-rings { width: 58px; height: 58px; flex-shrink: 0; transition: width 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), height 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.el-bw { display: flex; flex-direction: column; font-family: "Open Sans", var(--sans); color: var(--el-blue); line-height: 1.02; }
+.el-bw b { font-weight: 600; font-size: 1.28rem; letter-spacing: -0.01em; }
+.el-bw small { margin-top: 5px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--el-teal); }
+.site-header.is-scrolled .el-brand-rings { width: 48px; height: 48px; }
+.el-footer-logo { display: inline-flex; align-items: center; gap: 12px; padding: 16px 20px; text-decoration: none; }
+.el-foot-rings { width: 56px; height: 56px; }
+.el-footer-logo .el-bw b { font-size: 1.15rem; }
+@media (max-width: 700px) {
+  .el-brand-rings { width: 46px; height: 46px; }
+  .site-header.is-scrolled .el-brand-rings { width: 40px; height: 40px; }
+  .el-bw b { font-size: 1.05rem; }
+  .el-bw small { font-size: 0.54rem; }
+}
+
+/* footer watermark: Elements rings instead of the Cat Hill emblem */
+.brand-elements .site-footer::before { background-image: url("../assets/elements-icon.svg"); filter: brightness(0) invert(1); opacity: 0.06; }
