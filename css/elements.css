@@ -7,7 +7,9 @@
 @font-face { font-family: "Open Sans"; src: url("../assets/fonts/open-sans-600.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
 @font-face { font-family: "Open Sans"; src: url("../assets/fonts/open-sans-700.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
 
-.el {
+/* Tokens live on <body> so the Cat Hill header, footer and phone bar on this page
+   take Elements colours too. Every Cat Hill token is re-pointed to its Elements twin. */
+body.brand-elements {
   --el-blue: #0B69A5;
   --el-blue-deep: #08507F;
   --el-teal: #146566;
@@ -17,17 +19,46 @@
   --el-tint: #EEF6F5;
   --el-ink: #0B3550;
 
-  /* the site's tokens, re-pointed for this page */
+  /* Cat Hill palette → Elements */
+  --navy: var(--el-ink);
+  --navy-deep: #082B42;
   --ink: var(--el-ink);
+  --jade: var(--el-teal);
+  --jade-deep: #0F4F50;
+  --jade-light: var(--el-mint);
+  --mint: var(--el-tint);
+  --mint-soft: #F4F9FB;
+  --apricot: var(--el-mint);
+  --apricot-deep: var(--el-blue);
+  --blush: var(--el-tint);
+  --cream: #FFFFFF;
+  --paper: #FFFFFF;
+  --sage: var(--el-mint);
+  --sage-deep: var(--el-teal);
+  --sage-tint: var(--el-tint);
+  --sage-soft: #F4F9FB;
+  --coral: var(--el-blue);
+  --coral-deep: var(--el-blue-deep);
+  --honey: var(--el-blue);
   --wa: var(--el-blue);
   --wa-deep: var(--el-blue-deep);
-  --jade: var(--el-teal);
-  --sage-deep: var(--el-teal);
   --line: #D6E6E8;
+  --shadow: 0 10px 30px rgba(11, 53, 80, 0.10);
+  --shadow-lg: 0 22px 54px rgba(11, 53, 80, 0.16);
   --wash-a: rgba(108, 192, 177, 0.42);
   --wash-b: rgba(11, 105, 165, 0.16);
   --motion-ring: rgba(11, 105, 165, 0.40);
+  background: #FFFFFF;
+}
 
+/* site chrome on this page (these used fixed Cat Hill colours, not tokens) */
+.brand-elements .site-header { background: rgba(255, 255, 255, 0.92); }
+.brand-elements .mobile-bar { background: rgba(255, 255, 255, 0.96); }
+.brand-elements .main-nav a:hover { color: var(--el-blue); }
+.brand-elements .main-nav a.nav-cta:hover { color: #fff; }
+.brand-elements .site-footer { background: linear-gradient(160deg, #0B3550 0%, #082B42 100%); }
+
+.el {
   font-family: "Open Sans", var(--sans);
 }
 .el h1, .el h2, .el h3, .el .pract b { font-family: "Open Sans", var(--sans); font-weight: 600; letter-spacing: -0.01em; }
@@ -113,3 +144,6 @@ html.amp-motion .el-steps li:not(.is-lit) .el-n { background: transparent; color
 /* James's page: the phone bar reaches James */
 .el-bar .btn-wa { background: #0B69A5; border-color: #0B69A5; }
 .el-bar .btn-outline { color: #0B69A5; border-color: #0B69A5; }
+
+/* gentle rhythm now the page background is white */
+.el-elements { background: linear-gradient(180deg, #FFFFFF 0%, #F4F9FB 100%); }
