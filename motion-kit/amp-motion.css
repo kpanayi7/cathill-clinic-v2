@@ -1,0 +1,81 @@
+/*! AMP motion kit v1.0.0 · AMP London Group
+   Start states apply ONLY under html.amp-motion (set by the head snippet, confirmed by
+   amp-motion.js). No JS, reduced motion, or a kit that fails to load → everything is
+   simply visible. Elements get .is-in when their entrance has finished. */
+
+/* ---------- start states ---------- */
+
+html.amp-motion [data-motion="rise"]:not([data-motion-stagger]):not(.is-in),
+html.amp-motion [data-motion="rise"][data-motion-stagger] > :not(.is-in) {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+html.amp-motion [data-motion="unveil"]:not([data-motion-stagger]):not(.is-in),
+html.amp-motion [data-motion="unveil"][data-motion-stagger] > :not(.is-in) {
+  opacity: 0;
+  transform: translateY(12px);
+  clip-path: inset(10% 4% 10% 4% round 16px);
+}
+
+html.amp-motion [data-motion="lines"]:not(.is-in),
+html.amp-motion [data-motion="draw"]:not(.is-in) { opacity: 0; }
+
+/* CSS transitions on a site's cards would fight the tween; they come back with .is-in */
+html.amp-motion [data-motion]:not(.is-in),
+html.amp-motion [data-motion-stagger] > :not(.is-in) { transition: none !important; }
+
+/* ---------- steps: unlit steps are dimmed, never hidden ---------- */
+
+html.amp-motion [data-motion="steps"] > * { transition: opacity 0.6s ease; }
+html.amp-motion [data-motion="steps"] > :not(.is-lit) { opacity: 0.42; }
+
+/* ---------- wash: drifting brand-colour light (layer injected by the kit) ---------- */
+
+[data-motion="wash"] { position: relative; isolation: isolate; }
+.amp-wash { position: absolute; inset: 0; overflow: hidden; z-index: 0; pointer-events: none; }
+.amp-wash i {
+  position: absolute;
+  width: 70%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.75;
+  will-change: transform;
+}
+.amp-wash i:nth-child(1) {
+  right: -12%; top: -38%;
+  background: radial-gradient(circle, var(--wash-a, rgba(63, 176, 143, 0.55)) 0%, transparent 65%);
+  animation: ampWashA 18s ease-in-out infinite alternate;
+}
+.amp-wash i:nth-child(2) {
+  left: -18%; bottom: -52%;
+  background: radial-gradient(circle, var(--wash-b, rgba(238, 131, 84, 0.28)) 0%, transparent 65%);
+  animation: ampWashB 22s ease-in-out infinite alternate;
+}
+[data-motion="wash"] > :not(.amp-wash) { position: relative; z-index: 1; }
+
+@keyframes ampWashA { from { transform: translate3d(0, 0, 0) scale(1); } to { transform: translate3d(-14%, 10%, 0) scale(1.12); } }
+@keyframes ampWashB { from { transform: translate3d(0, 0, 0) scale(1.05); } to { transform: translate3d(12%, -12%, 0) scale(0.95); } }
+
+/* ---------- nudge: one soft ring, once ---------- */
+
+.amp-nudge { position: relative; }
+.amp-nudge::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  animation: ampNudge 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) 1 both;
+}
+@keyframes ampNudge {
+  from { box-shadow: 0 0 0 0 var(--motion-ring, rgba(23, 122, 101, 0.45)); }
+  to { box-shadow: 0 0 0 16px transparent; }
+}
+
+/* ---------- belt and braces ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .amp-wash i, .amp-nudge::after { animation: none !important; }
+}

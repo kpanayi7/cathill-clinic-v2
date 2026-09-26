@@ -1,0 +1,115 @@
+/* Elements Physiotherapy: James Galea's page inside the Cat Hill site.
+   The Cat Hill header and footer stay; everything inside <main class="el"> switches to
+   the Elements brand (from James's brand sheet, Sept 2026): blue #0B69A5 (wordmark),
+   deep teal #146566, mint #6CC0B1, grey-green #6D908B, Open Sans. */
+
+@font-face { font-family: "Open Sans"; src: url("../assets/fonts/open-sans-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Open Sans"; src: url("../assets/fonts/open-sans-600.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Open Sans"; src: url("../assets/fonts/open-sans-700.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+
+.el {
+  --el-blue: #0B69A5;
+  --el-blue-deep: #08507F;
+  --el-teal: #146566;
+  --el-mint: #6CC0B1;
+  --el-grey: #6D908B;
+  --el-grey-text: #4A6A65; /* grey-green deepened for small text (AA) */
+  --el-tint: #EEF6F5;
+  --el-ink: #0B3550;
+
+  /* the site's tokens, re-pointed for this page */
+  --ink: var(--el-ink);
+  --wa: var(--el-blue);
+  --wa-deep: var(--el-blue-deep);
+  --jade: var(--el-teal);
+  --sage-deep: var(--el-teal);
+  --line: #D6E6E8;
+  --wash-a: rgba(108, 192, 177, 0.42);
+  --wash-b: rgba(11, 105, 165, 0.16);
+  --motion-ring: rgba(11, 105, 165, 0.40);
+
+  font-family: "Open Sans", var(--sans);
+}
+.el h1, .el h2, .el h3, .el .pract b { font-family: "Open Sans", var(--sans); font-weight: 600; letter-spacing: -0.01em; }
+.el h2 { color: var(--el-ink); }
+.el .eyebrow { color: var(--el-teal); }
+.el .check-list li::before { color: var(--el-teal); }
+.el .aside li b { color: var(--el-blue); }
+.el .btn-outline { color: var(--el-blue); border-color: var(--el-blue); }
+.el .btn-outline:hover { background: var(--el-tint); }
+.el .btn-wa:hover { box-shadow: 0 8px 22px rgba(11, 105, 165, 0.30); }
+.el .faq summary::after { color: var(--el-blue); }
+.el .faq summary:hover { color: var(--el-blue); }
+
+/* ---------- hero ---------- */
+.el-hero {
+  padding: 34px 0 72px;
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(800px 460px at 92% -10%, rgba(108, 192, 177, 0.26) 0%, transparent 62%),
+    linear-gradient(180deg, #F1F8FA 0%, #FFFFFF 90%);
+}
+.el-hero .crumb { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--el-teal); margin-bottom: 26px; }
+.el-hero .crumb a { color: var(--el-teal); text-decoration: none; }
+.el-hero .crumb a:hover { text-decoration: underline; }
+.el-hero-in { display: grid; grid-template-columns: 280px 1fr; gap: 56px; align-items: center; }
+.el-rings { width: 100%; max-width: 280px; height: auto; }
+.el-rings circle { stroke-linecap: butt; }
+.el-eyebrow { display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--el-teal); margin-bottom: 14px; }
+.el-wordmark { font-size: clamp(2.3rem, 5.4vw, 4.1rem); line-height: 1.04; color: var(--el-blue); font-weight: 600; }
+.el-lede { font-size: 1.08rem; max-width: 52ch; margin: 20px 0 28px; }
+.el-ctas { justify-content: flex-start; }
+.el-where { margin-top: 22px; font-size: 0.85rem; color: var(--el-grey-text); }
+
+/* ---------- five elements ---------- */
+.el-steps { list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; position: relative; }
+.el-steps li { position: relative; padding: 26px 20px 24px; background: #fff; border: 1px solid var(--line); border-radius: 18px; border-top: 4px solid var(--el-mint); }
+.el-steps li:nth-child(1) { border-top-color: var(--el-grey); }
+.el-steps li:nth-child(2) { border-top-color: var(--el-mint); }
+.el-steps li:nth-child(3) { border-top-color: var(--el-teal); }
+.el-steps li:nth-child(4) { border-top-color: #3E8FB8; }
+.el-steps li:nth-child(5) { border-top-color: var(--el-blue); }
+.el-n { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; border: 2px solid currentColor; color: var(--el-blue); font-weight: 700; font-size: 0.95rem; margin-bottom: 14px; transition: background 0.5s ease, color 0.5s ease; }
+.el-steps li.is-lit .el-n, .el-steps li .el-n { background: var(--el-blue); color: #fff; border-color: var(--el-blue); }
+html.amp-motion .el-steps li:not(.is-lit) .el-n { background: transparent; color: #9DB5C4; border-color: #C9D8E0; }
+.el-steps h3 { font-size: 1.1rem; color: var(--el-ink); margin-bottom: 6px; }
+.el-steps p { font-size: 0.88rem; line-height: 1.55; }
+
+/* ---------- what James treats ---------- */
+.el-tint { background: var(--el-tint); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.el-treats { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+.el-treats h2 { font-size: 1.7rem; margin-bottom: 8px; }
+.el-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 18px; }
+.el-chips li { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 9px 16px; font-size: 0.9rem; font-weight: 600; color: var(--el-ink); }
+.el-chips li::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--el-mint); margin-right: 9px; vertical-align: 1px; }
+.el-note { font-size: 0.88rem; color: var(--el-grey-text); }
+
+/* ---------- about + aside ---------- */
+.el .prose .eyebrow { margin-bottom: 6px; }
+.el .pract img { border-color: #fff; }
+
+/* ---------- closing call to action ---------- */
+.el-cta { background: linear-gradient(160deg, var(--el-blue) 0%, var(--el-teal) 100%); padding: 84px 0; color: #fff; }
+.el-cta h2 { color: #fff; }
+.el-cta .lede { color: rgba(255, 255, 255, 0.85); }
+.el-cta .btn-wa { background: #fff; color: var(--el-blue); border-color: #fff; }
+.el-cta .btn-wa:hover { background: #EAF4F8; color: var(--el-blue-deep); border-color: #EAF4F8; }
+.el-cta .btn-outline { color: #fff; border-color: rgba(255, 255, 255, 0.7); }
+.el-cta .btn-outline:hover { background: rgba(255, 255, 255, 0.1); }
+
+/* ---------- responsive ---------- */
+@media (max-width: 960px) {
+  .el-steps { grid-template-columns: 1fr 1fr; }
+  .el-steps li:nth-child(5) { grid-column: 1 / -1; }
+  .el-treats { grid-template-columns: 1fr; gap: 36px; }
+}
+@media (max-width: 700px) {
+  .el-hero-in { grid-template-columns: 1fr; gap: 26px; }
+  .el-rings { max-width: 150px; }
+  .el-steps { grid-template-columns: 1fr; }
+  .el-cta { padding: 60px 0; }
+}
+
+/* James's page: the phone bar reaches James */
+.el-bar .btn-wa { background: #0B69A5; border-color: #0B69A5; }
+.el-bar .btn-outline { color: #0B69A5; border-color: #0B69A5; }
