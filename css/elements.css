@@ -167,3 +167,18 @@ html.amp-motion .el-steps li:not(.is-lit) .el-n { background: transparent; color
 
 /* footer watermark: Elements rings instead of the Cat Hill emblem */
 .brand-elements .site-footer::before { background-image: url("../assets/elements-icon.svg"); filter: brightness(0) invert(1); opacity: 0.06; }
+
+/* ---------- bigger Elements logo in the header (26 Sep) ---------- */
+.el-brand-rings { width: 72px; height: 72px; }
+.el-brand .el-bw b { font-size: 1.55rem; }
+.el-brand .el-bw small { font-size: 0.66rem; margin-top: 6px; }
+.el-brand .el-bw { transform-origin: left center; transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.site-header.is-scrolled .el-brand-rings { width: 56px; height: 56px; }
+.site-header.is-scrolled .el-brand .el-bw { transform: scale(0.84); }
+@media (max-width: 700px) {
+  .el-brand-rings { width: 56px; height: 56px; }
+  .el-brand .el-bw b { font-size: 1.2rem; }
+  .el-brand .el-bw small { font-size: 0.56rem; }
+  .site-header.is-scrolled .el-brand-rings { width: 46px; height: 46px; }
+}
+@media (prefers-reduced-motion: reduce) { .el-brand .el-bw { transition: none; } }
