@@ -212,20 +212,19 @@
 <section class="section video-sec">
   <div class="wrap">
     <div class="section-head center" data-motion="rise">
-      <span class="eyebrow">Inside the clinic</span>
-      <h2>A look inside Cat Hill Clinic</h2>
-      <p class="lede" style="margin: 0 auto;">Meet the team and see the treatment rooms before your first visit.</p>
+      <span class="eyebrow">Cat Hill Clinic in 15 seconds</span>
+      <h2>One clinic, four therapies, one team</h2>
+      <p class="lede" style="margin: 0 auto;">A short introduction to the clinic. Our full film, with a walk through the treatment rooms, is coming soon.</p>
     </div>
     <figure class="video-frame" data-motion="unveil">
-      <!-- When the clinic film arrives, replace the poster block with:
-      <video controls preload="none" playsinline poster="assets/video-poster.jpg">
-        <source src="assets/cathill-clinic.mp4" type="video/mp4">
-        <track kind="captions" src="assets/cathill-clinic.vtt" srclang="en" label="English" default>
-      </video>
-      Never autoplay with sound. Patients shown on film need written consent. -->
-      <div class="video-poster" data-motion="wash">
-        <button class="play" type="button" disabled aria-label="Clinic film coming soon"><span></span></button>
-        <figcaption><b>A look inside Cat Hill Clinic</b><span>Clinic film coming soon</span></figcaption>
+      <div class="film" data-film>
+        <video controls muted playsinline preload="metadata" poster="assets/video/cathill-film-poster.jpg" aria-label="Cat Hill Clinic in fifteen seconds: our four therapies, our practitioners, and how to book">
+          <source src="assets/video/cathill-film.mp4" type="video/mp4">
+        </video>
+        <div class="film-ui" hidden>
+          <button class="film-sound" type="button" aria-pressed="false">Sound on</button>
+          <button class="film-replay" type="button" hidden>Replay</button>
+        </div>
       </div>
     </figure>
   </div>

@@ -1255,3 +1255,17 @@ html.amp-motion .visit-steps li:not(.is-lit) .n { background: #E7D5CB; transform
 
 /* contrast: jade text sits on the mint band a shade deeper (AA) */
 .section.mint .eyebrow, .section.mint .team-mini span { color: var(--jade-deep); }
+
+/* ---------- v2: brand films (play once when seen, rest on the end card) ---------- */
+.film { position: relative; background: var(--navy-deep); }
+.film video { display: block; width: 100%; aspect-ratio: 16 / 9; background: var(--cream); }
+.film-ui { position: absolute; right: 16px; bottom: 16px; display: flex; gap: 8px; }
+.film-ui[hidden], .film-ui button[hidden] { display: none; }
+.film-ui button {
+  font: 600 0.85rem/1 var(--sans); color: #fff; cursor: pointer;
+  background: rgba(11, 32, 56, 0.62); border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  padding: 10px 16px; border-radius: 999px; transition: background 0.2s ease;
+}
+.film-ui button:hover { background: rgba(11, 32, 56, 0.8); }
+.film-ui .film-sound[aria-pressed="true"] { background: var(--jade); border-color: var(--jade); }

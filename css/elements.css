@@ -182,3 +182,7 @@ html.amp-motion .el-steps li:not(.is-lit) .el-n { background: transparent; color
   .site-header.is-scrolled .el-brand-rings { width: 46px; height: 46px; }
 }
 @media (prefers-reduced-motion: reduce) { .el-brand .el-bw { transition: none; } }
+
+/* Elements film section */
+.el-film { background: #fff; }
+.el .film-ui .film-sound[aria-pressed="true"] { background: var(--el-blue); border-color: var(--el-blue); }

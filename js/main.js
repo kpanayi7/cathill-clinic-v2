@@ -18,6 +18,32 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // Brand films: play once, muted, when half on screen; pause off screen; rest on the end card.
+  // Reduced motion (or no IntersectionObserver): leave the native controls and never autoplay.
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('[data-film]').forEach(function (box) {
+    var v = box.querySelector('video'), ui = box.querySelector('.film-ui');
+    var sound = box.querySelector('.film-sound'), replay = box.querySelector('.film-replay');
+    if (!v || reduce || !('IntersectionObserver' in window)) return;
+    v.removeAttribute('controls');
+    ui.hidden = false;
+    var played = false;
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting && !played) { played = true; v.play().catch(function () { v.setAttribute('controls', ''); ui.hidden = true; }); }
+        else if (!e.isIntersecting && !v.paused) { v.pause(); played = false; }
+      });
+    }, { threshold: 0.5 }).observe(v);
+    v.addEventListener('ended', function () { replay.hidden = false; });
+    replay.addEventListener('click', function () { replay.hidden = true; v.currentTime = 0; v.play(); });
+    sound.addEventListener('click', function () {
+      v.muted = !v.muted;
+      sound.setAttribute('aria-pressed', v.muted ? 'false' : 'true');
+      sound.textContent = v.muted ? 'Sound on' : 'Sound off';
+      if (!v.muted && (v.ended || v.paused)) { replay.hidden = true; if (v.ended) v.currentTime = 0; v.play(); }
+    });
+  });
+
   // Demo forms: swap for a success note instead of submitting
   document.querySelectorAll('form[data-demo]').forEach(function (form) {
     form.addEventListener('submit', function (ev) {
