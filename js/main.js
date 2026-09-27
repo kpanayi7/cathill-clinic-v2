@@ -34,6 +34,10 @@ document.addEventListener('DOMContentLoaded', function () {
         else if (!e.isIntersecting && !v.paused) { v.pause(); played = false; }
       });
     }, { threshold: 0.5 }).observe(v);
+    box.ampPlayWithSound = function () {   // a visitor asked for it, so sound is allowed
+      played = true; v.muted = false; sound.setAttribute('aria-pressed', 'true'); sound.textContent = 'Sound off';
+      replay.hidden = true; v.currentTime = 0; v.play();
+    };
     v.addEventListener('ended', function () { replay.hidden = false; });
     replay.addEventListener('click', function () { replay.hidden = true; v.currentTime = 0; v.play(); });
     sound.addEventListener('click', function () {
@@ -41,6 +45,19 @@ document.addEventListener('DOMContentLoaded', function () {
       sound.setAttribute('aria-pressed', v.muted ? 'false' : 'true');
       sound.textContent = v.muted ? 'Sound on' : 'Sound off';
       if (!v.muted && (v.ended || v.paused)) { replay.hidden = true; if (v.ended) v.currentTime = 0; v.play(); }
+    });
+  });
+
+  // "Watch the introduction" links: glide to the film and play it with sound
+  document.querySelectorAll('[data-film-play]').forEach(function (a) {
+    a.addEventListener('click', function (ev) {
+      var target = document.querySelector(a.getAttribute('href'));
+      var box = target && target.querySelector('[data-film]');
+      if (!box) return;
+      ev.preventDefault();
+      box.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+      if (box.ampPlayWithSound) box.ampPlayWithSound();
+      else { var v = box.querySelector('video'); v.muted = false; v.currentTime = 0; v.play(); }
     });
   });
 

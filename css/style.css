@@ -1184,7 +1184,7 @@ a.card { text-decoration: none; display: block; }
 .card:hover { box-shadow: 0 14px 34px rgba(23, 122, 101, 0.14); }
 
 /* ---------- v2: clinic video frame ---------- */
-.video-sec { background: var(--cream); }
+.video-sec { background: linear-gradient(180deg, #FFFFFF 0%, var(--cream) 100%); }
 .video-frame { max-width: 920px; margin: 0 auto; border-radius: 22px; overflow: hidden; box-shadow: var(--shadow-lg); }
 .video-frame video { display: block; width: 100%; aspect-ratio: 16 / 9; background: var(--navy-deep); }
 .video-poster {
@@ -1269,3 +1269,10 @@ html.amp-motion .visit-steps li:not(.is-lit) .n { background: #E7D5CB; transform
 }
 .film-ui button:hover { background: rgba(11, 32, 56, 0.8); }
 .film-ui .film-sound[aria-pressed="true"] { background: var(--jade); border-color: var(--jade); }
+
+/* "Watch the introduction" link in the hero: scrolls to the film and plays it with sound */
+.watch-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; font-weight: 600; font-size: 0.95rem; color: var(--navy); text-decoration: none; }
+.watch-link svg { width: 30px; height: 30px; color: var(--jade); transition: transform 0.25s ease; }
+.watch-link:hover svg { transform: scale(1.1); }
+.watch-link:hover { color: var(--jade); }
+.el .watch-link { color: var(--el-ink); } .el .watch-link svg { color: var(--el-blue); }
