@@ -285,7 +285,7 @@ h2 { font-size: clamp(1.7rem, 3.2vw, 2.4rem); }
   top: -40px;
   width: 520px;
   height: 520px;
-  background: url("../assets/logo-icon.png") no-repeat center / contain;
+  background: url("../assets/logo-icon-v3.png") no-repeat center / contain;
   opacity: 0.06;
   pointer-events: none;
   z-index: 1;
@@ -1201,7 +1201,7 @@ a.card { text-decoration: none; display: block; }
 }
 .video-poster::before {
   content: ""; position: absolute; right: -40px; bottom: -70px; width: 360px; height: 360px;
-  background: url("../assets/logo-icon.png") no-repeat center / contain;
+  background: url("../assets/logo-icon-v3.png") no-repeat center / contain;
   filter: brightness(0) invert(1); opacity: 0.07; z-index: 1; pointer-events: none;
 }
 .video-poster .play {
@@ -1276,3 +1276,90 @@ html.amp-motion .visit-steps li:not(.is-lit) .n { background: #E7D5CB; transform
 .watch-link:hover svg { transform: scale(1.1); }
 .watch-link:hover { color: var(--jade); }
 .el .watch-link { color: var(--el-ink); } .el .watch-link svg { color: var(--el-blue); }
+
+/* ---------- Jenny's changes, 8 Oct 2026 ----------
+   Bolder banners, bigger logo (vivid turquoise-green, therapies line instead of "East Barnet · est. 1997"),
+   simple home hero, Adam Leighton, registrations strip in the footer. */
+
+:root { --header-h: 100px; --logo-teal: #17A08C; }
+.site-header.is-scrolled { --header-h: 80px; }
+
+/* bolder banners: a clear mint-to-turquoise band against the white page */
+.hero, .page-hero {
+  background:
+    radial-gradient(900px 520px at 88% -10%, rgba(23, 160, 140, 0.40) 0%, transparent 62%),
+    radial-gradient(700px 420px at 0% 110%, rgba(238, 131, 84, 0.18) 0%, transparent 60%),
+    linear-gradient(165deg, #BDE5D5 0%, #D3EEE3 58%, #E6F5EE 100%);
+}
+.page-hero { border-bottom: none; }
+
+/* header logo: bigger, with the therapies line under the wordmark */
+.brand { gap: 14px; }
+.brand .brand-icon { height: 80px; }
+.brand-text { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.brand .brand-word { height: 40px; }
+.brand-tag { font-size: 9.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); white-space: nowrap; line-height: 1; transition: opacity 0.3s ease; }
+.site-header.is-scrolled .brand-icon { height: 62px; }
+.site-header.is-scrolled .brand-word { height: 34px; }
+@media (max-width: 1180px) { .brand-tag { display: none; } }
+@media (max-width: 700px) {
+  :root { --header-h: 84px; }
+  .site-header.is-scrolled { --header-h: 70px; }
+  .brand .brand-icon { height: 64px; } .brand .brand-word { height: 30px; }
+  .site-header.is-scrolled .brand-icon { height: 52px; } .site-header.is-scrolled .brand-word { height: 26px; }
+}
+@media (max-width: 380px) { .brand .brand-word { height: 26px; } }
+
+/* the logo's therapies line, wherever the full logo appears */
+.logo-tag { display: block; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--navy); text-wrap: balance; line-height: 1.5; }
+
+/* simple home hero: big logo, slogan, two buttons. A photo (then the clinic film) slots in behind later. */
+.hero-simple::before { display: none; }
+.hero-simple .hero-center { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; text-align: center; padding-top: 54px; padding-bottom: 70px; }
+.hero-logo img { display: block; width: clamp(230px, 30vw, 350px); height: auto; margin: 0 auto; }
+.hero-logo .logo-tag { margin-top: 16px; max-width: 34em; }
+.hero-simple h1 { margin: 30px 0 28px; max-width: 18ch; }
+.hero-simple .watch-link { margin-top: 22px; }
+.hero-media { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+.hero-simple:has(.hero-media)::after { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(214, 238, 228, 0.88), rgba(230, 245, 238, 0.80)); }
+@media (max-width: 700px) {
+  .hero-simple .hero-center { padding-top: 40px; padding-bottom: 54px; }
+  .hero-logo .logo-tag { font-size: 0.7rem; letter-spacing: 0.12em; max-width: 22em; }
+}
+
+/* practitioners without a photo yet */
+.card .who .ini { width: 26px; height: 26px; border-radius: 50%; display: inline-grid; place-items: center; background: var(--logo-teal); color: #fff; font-size: 0.58rem; letter-spacing: 0.02em; border: 2px solid #fff; box-shadow: 0 2px 6px rgba(16,48,80,0.18); }
+.ini-photo { display: grid; place-items: center; font-family: var(--serif); font-size: 2rem; letter-spacing: 0.04em; color: #fff; background: linear-gradient(150deg, var(--jade-light), var(--jade)); box-shadow: var(--shadow); }
+.team-mini .ini-photo { width: 108px; aspect-ratio: 1; border-radius: 50%; border: 4px solid #fff; margin: 0 auto 14px; }
+.team-card .ini-photo { width: 128px; aspect-ratio: 1; border-radius: 10px; border: 3px solid #fff; flex-shrink: 0; }
+.team-grid { gap: 28px; }
+
+/* about: longer bios */
+.team-card p + p { margin-top: 9px; }
+.team-card p.t-reg { margin-top: 12px; font-size: 0.8rem; font-weight: 600; color: var(--jade-deep); }
+.team-card .t-role a { color: inherit; }
+
+/* visiting: getting here + hours note */
+.visit-panel .getting-here { margin-top: 12px; }
+.visit-panel .getting-here li { display: block; position: relative; padding: 3px 0 3px 16px; }
+.visit-panel .getting-here li::before { content: ""; position: absolute; left: 0; top: 0.75em; width: 6px; height: 6px; border-radius: 50%; background: var(--logo-teal); }
+.hours-note { margin-top: 10px; font-size: 0.8rem; opacity: 0.85; }
+
+/* footer: full logo with its therapies line, registrations strip at the bottom of every page */
+.footer-logo { text-align: center; }
+.footer-logo img { width: 200px; display: block; margin: 0 auto; }
+.footer-logo .logo-tag { margin: 10px auto 0; max-width: 200px; font-size: 0.6rem; letter-spacing: 0.1em; }
+.footer-bodies { border-top: 1px solid rgba(255, 255, 255, 0.12); padding-top: 22px; padding-bottom: 22px; display: flex; align-items: center; flex-wrap: wrap; gap: 14px 22px; }
+.fb-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sage); }
+.footer-bodies ul { list-style: none; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.footer-bodies img { display: block; height: 40px; width: auto; background: #fff; border-radius: 6px; padding: 4px; }
+.fb-chip { display: inline-flex; align-items: center; height: 40px; padding: 0 12px; border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 6px; font-size: 0.74rem; color: #fff; }
+/* therapies line breaks cleanly into two pairs where it must wrap */
+.logo-tag > span { white-space: nowrap; }
+.hero-logo .logo-tag { max-width: none; }
+.footer-logo .logo-tag .lt-sep { display: none; }
+.footer-logo .logo-tag > span { display: block; }
+@media (max-width: 560px) {
+  .hero-logo .logo-tag .lt-sep { display: none; }
+  .hero-logo .logo-tag > span { display: block; }
+}
