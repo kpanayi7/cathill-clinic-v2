@@ -1363,3 +1363,9 @@ html.amp-motion .visit-steps li:not(.is-lit) .n { background: #E7D5CB; transform
   .hero-logo .logo-tag .lt-sep { display: none; }
   .hero-logo .logo-tag > span { display: block; }
 }
+/* header: therapies line centred under the wordmark, in two balanced lines */
+.brand-text { align-items: center; gap: 5px; }
+.brand .brand-word { height: 42px; }
+.brand-tag { font-size: 8.5px; letter-spacing: 0.09em; line-height: 1.4; text-align: center; }
+.brand-tag > span { display: block; }
+.site-header.is-scrolled .brand-word { height: 34px; }
